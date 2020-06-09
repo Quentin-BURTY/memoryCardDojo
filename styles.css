@@ -1,0 +1,9 @@
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+img {
+    width: calc(25% - 4px);
+    border: 2px solid pink;
+}
