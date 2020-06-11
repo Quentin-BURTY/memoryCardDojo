@@ -9,7 +9,7 @@ for (let i = 0; i < cards.length; i++) {
         clickCounter++;
         previousImg = targetImg;
         previousUrl = newUrl;
-        const targetId = cards[i].dataset.id;
+        const targetId = event.target.dataset.id;
         targetImg = document.getElementById(targetId)
         newUrl = targetImg.getAttribute('src');
         if (previousUrl === newUrl && targetImg !== previousImg) {
@@ -25,6 +25,5 @@ for (let i = 0; i < cards.length; i++) {
             }
         }
         targetImg.classList.toggle('hidden')
-        console.log(previousImg, targetImg);
     })
 }
