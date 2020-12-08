@@ -1,29 +1,29 @@
 const cards = document.getElementsByClassName('card');
-let newUrl = '';
-let targetImg = '';
-let win = 0;
-let clickCounter = 0;
+let imageClickedSrc = '';
+let imageClicked = '';
+let counter = 0;
+let winCount = 0;
 
 for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener('click', event => {
-        clickCounter++;
-        previousImg = targetImg;
-        previousUrl = newUrl;
-        const targetId = event.target.dataset.id;
-        targetImg = document.getElementById(targetId)
-        newUrl = targetImg.getAttribute('src');
-        if (previousUrl === newUrl && targetImg !== previousImg) {
-            previousImg.classList.add('display-block')
-            targetImg.classList.add('display-block')
-            win++;
-            if (cards.length / 2 === win) {
-                alert('bravo gagné en ' + clickCounter + ' clicks ')
+        let imagePrevious = imageClicked;
+        let imagePreviousSrc = imageClickedSrc;
+        let clickedPictureId = cards[i].getAttribute('data-id');
+        imageClicked = document.getElementById(clickedPictureId);
+        imageClickedSrc = imageClicked.src;
+        counter += 1;
+        if (imagePreviousSrc === imageClickedSrc && imagePrevious !== imageClicked) {
+            imageClicked.classList.add('display-block');
+            imagePrevious.classList.add('display-block');
+            winCount += 2;
+            if (winCount === cards.length) {
+                alert('Vous avez gagné en ' + counter + ' coups');
             }
-        } else {
-            if (previousImg !== '') {
-                previousImg.classList.toggle('hidden')
-            }
+
+        } else if (imagePrevious !== '') {
+            imagePrevious.classList.toggle('hidden');
         }
-        targetImg.classList.toggle('hidden')
+        imageClicked.classList.toggle('hidden')
+
     })
 }
